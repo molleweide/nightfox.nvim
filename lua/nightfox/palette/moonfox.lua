@@ -8,34 +8,80 @@ local meta = {
   light = false,
 }
 
+-----------------------------------------------------------------------------
+
+-- Background and foreground
+
+-- black     = {"hex": '#080808', "term": 232}
+-- white     = {"hex": '#c6c6c6', "term": 251}
+
+-- Variations of charcoal-grey
+
+-- grey0     = {"hex": '#323437', "term": 0  }
+-- grey254   = {"hex": '#e4e4e4', "term": 254}
+-- grey249   = {"hex": '#b2b2b2', "term": 249}
+-- grey247   = {"hex": '#9e9e9e', "term": 247}
+-- grey246   = {"hex": '#949494', "term": 246}
+-- grey244   = {"hex": '#808080', "term": 244}
+-- grey241   = {"hex": '#626262', "term": 241}
+-- grey238   = {"hex": '#444444', "term": 238}
+-- grey237   = {"hex": '#3a3a3a', "term": 237}
+-- grey236   = {"hex": '#303030', "term": 236}
+-- grey235   = {"hex": '#262626', "term": 235}
+-- grey234   = {"hex": '#1c1c1c', "term": 234}
+-- grey233   = {"hex": '#121212', "term": 233}
+
+-- Core theme colors
+
+-- khaki     = {"hex": '#c2c292', "term": 11}
+-- yellow    = {"hex": '#e3c78a', "term": 3 }
+-- orange    = {"hex": '#de935f', "term": 7 }
+-- coral     = {"hex": '#f09479', "term": 8 }
+-- lime      = {"hex": '#85dc85', "term": 14}
+-- green     = {"hex": '#8cc85f', "term": 2 }
+-- emerald   = {"hex": '#36c692', "term": 10}
+-- blue      = {"hex": '#80a0ff', "term": 4 }
+-- sky       = {"hex": '#74b2ff', "term": 12}
+-- turquoise = {"hex": '#79dac8', "term": 6 }
+-- purple    = {"hex": '#ae81ff', "term": 13}
+-- cranberry = {"hex": '#e2637f', "term": 15}
+-- violet    = {"hex": '#d183e8', "term": 5 }
+-- crimson   = {"hex": '#ff5189', "term": 9 }
+-- red       = {"hex": '#ff5454', "term": 1 }
+
+-- Extra colors
+
+-- spring    = {"hex": '#00875f', "term": 29}
+
+-----------------------------------------------------------------------------
 -- stylua: ignore
 local palette = {
-  black   = Shade.new("#393552", "#47407d", "#322e42"),
-  red     = Shade.new("#eb6f92", "#f083a2", "#d84f76"),
-  green   = Shade.new("#a3be8c", "#b1d196", "#8aa872"),
-  yellow  = Shade.new("#f6c177", "#f9cb8c", "#e6a852"),
-  blue    = Shade.new("#569fba", "#65b1cd", "#4a869c"),
-  magenta = Shade.new("#c4a7e7", "#ccb1ed", "#a580d2"),
-  cyan    = Shade.new("#9ccfd8", "#a6dae3", "#7bb8c1"),
-  white   = Shade.new("#e0def4", "#e2e0f7", "#b1acde"),
-  orange  = Shade.new("#ea9a97", "#f0a4a2", "#d6746f"),
-  pink    = Shade.new("#eb98c3", "#f0a6cc", "#d871a6"),
+  black   = Shade.new("#393b44", 0.15, -0.15),
+  red     = Shade.new("#c94f6d", 0.15, -0.15),
+  green   = Shade.new("#81b29a", 0.10, -0.15),
+  yellow  = Shade.new("#dbc074", 0.15, -0.15),
+  blue    = Shade.new("#719cd6", 0.15, -0.15),
+  magenta = Shade.new("#9d79d6", 0.30, -0.15),
+  cyan    = Shade.new("#63cdcf", 0.15, -0.15),
+  white   = Shade.new("#dfdfe0", 0.15, -0.15),
+  orange  = Shade.new("#f4a261", 0.15, -0.15),
+  pink    = Shade.new("#d67ad2", 0.15, -0.15),
 
-  comment = "#817c9c",
+  comment = "#738091",
 
-  bg0     = "#191726", -- Dark bg (status line and float)
-  bg1     = "#232136", -- Default bg
-  bg2     = "#2d2a45", -- Lighter bg (colorcolm folds)
-  bg3     = "#373354", -- Lighter bg (cursor line)
-  bg4     = "#4b4673", -- Conceal, border fg
+  bg0     = "#131a24", -- Dark bg (status line and float)
+  bg1     = "#192330", -- Default bg
+  bg2     = "#212e3f", -- Lighter bg (colorcolm folds)
+  bg3     = "#29394f", -- Lighter bg (cursor line)
+  bg4     = "#39506d", -- Conceal, border fg
 
-  fg0     = "#eae8ff", -- Lighter fg
-  fg1     = "#e0def4", -- Default fg
-  fg2     = "#cdcbe0", -- Darker fg (status line)
-  fg3     = "#6e6a86", -- Darker fg (line numbers, fold colums)
+  fg0     = "#d6d6d7", -- Lighter fg
+  fg1     = "#cdcecf", -- Default fg
+  fg2     = "#aeafb0", -- Darker fg (status line)
+  fg3     = "#71839b", -- Darker fg (line numbers, fold colums)
 
-  sel0    = "#433c59", -- Popup bg, visual selection bg
-  sel1    = "#63577d", -- Popup sel bg, search bg
+  sel0    = "#2b3b51", -- Popup bg, visual selection bg
+  sel1    = "#3c5372", -- Popup sel bg, search bg
 }
 
 local function generate_spec(pal)
@@ -88,17 +134,17 @@ local function generate_spec(pal)
   }
 
   spec.diag_bg = {
-    error = C(spec.bg1):blend(C(spec.diag.error), 0.15):to_css(),
-    warn  = C(spec.bg1):blend(C(spec.diag.warn), 0.15):to_css(),
-    info  = C(spec.bg1):blend(C(spec.diag.info), 0.15):to_css(),
-    hint  = C(spec.bg1):blend(C(spec.diag.hint), 0.15):to_css(),
+    error = C(spec.bg1):blend(C(spec.diag.error), 0.2):to_css(),
+    warn  = C(spec.bg1):blend(C(spec.diag.warn), 0.2):to_css(),
+    info  = C(spec.bg1):blend(C(spec.diag.info), 0.2):to_css(),
+    hint  = C(spec.bg1):blend(C(spec.diag.hint), 0.2):to_css(),
   }
 
   spec.diff = {
-    add    = C(spec.bg1):blend(C(pal.green.base), 0.2):to_css(),
-    delete = C(spec.bg1):blend(C(pal.red.base), 0.2):to_css(),
-    change = C(spec.bg1):blend(C(pal.blue.base), 0.2):to_css(),
-    text   = C(spec.bg1):blend(C(pal.blue.base), 0.4):to_css(),
+    add    = C(spec.bg1):blend(C(pal.green.dim), 0.15):to_css(),
+    delete = C(spec.bg1):blend(C(pal.red.dim), 0.15):to_css(),
+    change = C(spec.bg1):blend(C(pal.blue.dim), 0.15):to_css(),
+    text   = C(spec.bg1):blend(C(pal.cyan.dim), 0.2):to_css(),
   }
 
   spec.git = {
